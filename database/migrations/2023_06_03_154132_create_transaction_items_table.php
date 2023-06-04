@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('transaction_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('users_id');
-            $table->foreignId('products_id');
-            $table->foreignId('transactions_id');
+            $table->foreignId('users_id')->constrained();
+            $table->foreignId('products_id')->constrained();
+            $table->foreignId('transactions_id')->constrained();
             $table->unsignedInteger('quantity');
             $table->softDeletes();
             $table->timestamps();

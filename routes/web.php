@@ -34,9 +34,13 @@ Route::prefix('admin')->middleware(['auth', 'EnsureUserRoles', 'verified'])->nam
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    // Filepond Upload and Cancel Upload Route
+    Route::post('gallery/upload', [ProductGalleryController::class, 'upload'])->name('gallery.upload');
+    Route::delete('gallery/cancel', [ProductGalleryController::class, 'cancel'])->name('gallery.cancel');
+
     // CRUD Category, Gallery, Product Route Resource
-    Route::resource('product', ProductController::class);
-    Route::resource('gallery', ProductGalleryController::class);
+    Route::resource('product', ProductController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+    Route::resource('product.gallery', ProductGalleryController::class)->shallow()->only(['index', 'create', 'store', 'destroy']);
     Route::resource('category', ProductCategoryController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
 });
 

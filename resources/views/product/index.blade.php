@@ -30,31 +30,45 @@
                             </tr>
                           </thead>
                           <tbody>
-                            @foreach ($products as $product)
-                              <tr>
-                                <td class="font-normal leading-normal text-sm">{{$loop->iteration}}</td>
-                                <td class="font-normal leading-normal text-sm">{{$product->name}}</td>
-                                <td class="font-normal leading-normal text-sm">Rp.{{$product->price}}</td>
-                                <td class="font-normal leading-normal text-sm">{{$product->tags}}</td>
-                                <td class="font-normal leading-normal text-sm">{{$product->Categories->name}}</td>
-                                <td class="font-normal leading-normal text-sm">
-                                  <a href="{{route('admin.product.edit', $product)}}"
-                                    type="button"
-                                    class="text-white bg-gray-600 hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-7 py-2.5 text-center"
-                                  >Edit
-                                  </a>
-                                  <form method="POST" action="{{route('admin.product.destroy', $product)}}" class="inline-block" >
-                                    @csrf
-                                    @method('delete')
-                                    <button
-                                      type="submit"
-                                      class="text-white bg-red-600 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
-                                    >Hapus
-                                    </button>
-                                  </form>
-                                </td>
-                              </tr>
-                            @endforeach
+                            @forelse ($products as $product)
+                            <tr>
+                              <td class="font-normal leading-normal text-sm">{{$loop->iteration}}</td>
+                              <td class="font-normal leading-normal text-sm">{{$product->name}}</td>
+                              <td class="font-normal leading-normal text-sm">Rp.{{$product->price}}</td>
+                              <td class="font-normal leading-normal text-sm">{{$product->tags}}</td>
+                              <td class="font-normal leading-normal text-sm">{{$product->Categories->name}}</td>
+                              <td class="font-normal leading-normal text-sm">
+                                <a href="{{route('admin.product.gallery.index', $product)}}"
+                                  type="button"
+                                  class="text-white bg-blue-600 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
+                                >Gallery
+                                </a>
+                                <a href="{{route('admin.product.edit', $product)}}"
+                                  type="button"
+                                  class="text-white bg-gray-600 hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-7 py-2.5 text-center"
+                                >Edit
+                                </a>
+                                <form method="POST" action="{{route('admin.product.destroy', $product)}}" class="inline-block" >
+                                  @csrf
+                                  @method('delete')
+                                  <button
+                                    type="submit"
+                                    class="text-white bg-red-600 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
+                                  >Hapus
+                                  </button>
+                                </form>
+                              </td>
+                            </tr>
+                            @empty
+                            <tr>
+                              <td colspan="6" class="text-center">Tidak ada apapun disini.</td>
+                              <td class="hidden"></td>
+                              <td class="hidden"></td>
+                              <td class="hidden"></td>
+                              <td class="hidden"></td>
+                              <td class="hidden"></td>
+                            </tr>
+                            @endforelse
                           </tbody>
                         </table>
                       </div>

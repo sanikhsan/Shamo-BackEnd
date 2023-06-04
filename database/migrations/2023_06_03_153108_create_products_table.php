@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedInteger('price');
             $table->text('description');
             $table->string('tags');
-            $table->foreignId('product_categories_id');
+            $table->foreignId('product_categories_id')->constrained();
             $table->softDeletes();
             $table->timestamps();
         });
