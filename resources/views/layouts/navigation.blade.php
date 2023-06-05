@@ -32,7 +32,7 @@
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                        <x-nav-link :href="route('admin.user.index')" :active="request()->routeIs('admin.user*')">
                             {{ __('Users') }}
                         </x-nav-link>
                     </div>
@@ -100,7 +100,7 @@
             <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                 {{ __('Transaction') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+            <x-responsive-nav-link :href="route('admin.user.index')" :active="request()->routeIs('admin.user*')">
                 {{ __('Users') }}
             </x-responsive-nav-link>
         </div>
