@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductGalleryController;
+use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,7 @@ Route::prefix('admin')->middleware(['auth', 'EnsureUserRoles', 'verified'])->nam
     Route::resource('product.gallery', ProductGalleryController::class)->shallow()->only(['index', 'create', 'store', 'destroy']);
     Route::resource('category', ProductCategoryController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
     Route::resource('user', UserController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+    Route::resource('transaction', TransactionController::class)->only(['index', 'show', 'edit', 'update']);
 });
 
 require __DIR__.'/auth.php';

@@ -27,7 +27,7 @@
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                        <x-nav-link :href="route('admin.transaction.index')" :active="request()->routeIs('admin.transaction*')">
                             {{ __('Transaction') }}
                         </x-nav-link>
                     </div>
@@ -97,7 +97,7 @@
             <x-responsive-nav-link :href="route('admin.category.index')" :active="request()->routeIs('admin.category*')">
                 {{ __('Product Category') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+            <x-responsive-nav-link :href="route('admin.transaction.index')" :active="request()->routeIs('admin.transaction*')">
                 {{ __('Transaction') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.user.index')" :active="request()->routeIs('admin.user*')">
